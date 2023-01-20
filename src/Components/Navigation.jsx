@@ -11,12 +11,15 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import SportsBar from "@mui/icons-material/SportsBar";
 
-import {SIDEBAR_WIDTH, TITLE, VERSION} from "./variables";
+import {SidebarData} from "./SidebarData";
+
+import {SIDEBAR_WIDTH, TITLE, VERSION} from "../consts";
 import {Stack} from "@mui/system";
+import {Button} from "@mui/material";
+import {update} from "../BrauereiController";
+import {Link} from "react-router-dom";
 
 export default function Navigation() {
 	return (
@@ -58,22 +61,20 @@ export default function Navigation() {
 			>
 				<Toolbar />
 				<Box sx={{overflow: "auto"}}>
-                    <List>
-                        {/* //*      https://mui.com/material-ui/react-list/#selected-listitem     */}
-						{["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-							<ListItem key={text} disablePadding>
-								<ListItemButton>
-									<ListItemIcon>
-										{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-									</ListItemIcon>
-									<ListItemText primary={text} />
+					<List>
+						{/* //*      https://mui.com/material-ui/react-list/#selected-listitem     */}
+						{SidebarData.map((val, key) => (
+							<ListItem>
+								<ListItemButton component={Link} key={val.title} to={val.link}>
+									<ListItemIcon>{val.icon}</ListItemIcon>
+									<ListItemText primary={val.title} />
 								</ListItemButton>
 							</ListItem>
 						))}
 					</List>
 					<Divider />
 					<List>
-                        <List
+						<Button onClick={update}>Press me</Button>
 					</List>
 				</Box>
 			</Drawer>
