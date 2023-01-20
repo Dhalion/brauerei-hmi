@@ -1,5 +1,9 @@
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import React from "react";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import SportsBarOutlinedIcon from "@mui/icons-material/SportsBarOutlined";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import ModeOutlinedIcon from "@mui/icons-material/ModeOutlined";
+import ReceiptLongOutlinedIcon from "@mui/icons-material/ReceiptLongOutlined";
 
 export const SidebarData = [
 	{
@@ -10,22 +14,22 @@ export const SidebarData = [
 
 	{
 		title: "Brauen",
-		icon: <ArrowForwardIosIcon />,
+		icon: <SportsBarOutlinedIcon />,
 		link: "/brauen",
 	},
 	{
-		title: "Einstellungen",
-		icon: <ArrowForwardIosIcon />,
-		link: "/einstellungen",
-	},
-	{
 		title: "Manueller Modus",
-		icon: <ArrowForwardIosIcon />,
+		icon: <ModeOutlinedIcon />,
 		link: "/manuell",
 	},
 	{
 		title: "Rezepte",
-		icon: <ArrowForwardIosIcon />,
+		icon: <ReceiptLongOutlinedIcon />,
 		link: "/rezepte",
+	},
+	{
+		title: "Einstellungen",
+		icon: <SettingsOutlinedIcon />,
+		link: "/einstellungen",
 	},
 ];
