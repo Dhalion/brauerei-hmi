@@ -62,7 +62,6 @@ export default function Navigation() {
 				<Toolbar />
 				<Box sx={{overflow: "auto"}}>
 					<List>
-						{/* //*      https://mui.com/material-ui/react-list/#selected-listitem     */}
 						{SidebarData.map((val, key) => (
 							<ListItem>
 								<ListItemButton component={Link} key={val.title} to={val.link}>

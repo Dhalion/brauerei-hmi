@@ -1,16 +1,15 @@
 import React from "react";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import SportsBarOutlinedIcon from "@mui/icons-material/SportsBarOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import ModeOutlinedIcon from "@mui/icons-material/ModeOutlined";
 import ReceiptLongOutlinedIcon from "@mui/icons-material/ReceiptLongOutlined";
 
 export const SidebarData = [
-	{
-		title: "Main",
-		icon: <ArrowForwardIosIcon />,
-		link: "/",
-	},
+	// {
+	// 	title: "Main",
+	// 	icon: <ArrowForwardIosIcon />,
+	// 	link: "/",
+	// },
 
 	{
 		title: "Brauen",
