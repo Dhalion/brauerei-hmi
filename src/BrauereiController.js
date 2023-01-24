@@ -1,3 +1,5 @@
+import brauerei from "./BrauereiAPI/Brauerei";
+
 let settings = {
 	pressed: false,
 };
@@ -5,4 +7,5 @@ let settings = {
 export const update = () => {
 	settings.pressed = !settings.pressed;
 	console.log("State: " + settings.pressed);
+	brauerei.fetchAllValues();
 };

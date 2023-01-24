@@ -37,14 +37,12 @@ export default function Navigation() {
 					<Stack direction="row">
 						{" "}
 						<SportsBar fontSize="large" />
-						<Typography variant="h6" ml={2} align="centered">
+						<Typography variant="h6" ml={2} align="center">
 							{TITLE}
 						</Typography>
 					</Stack>
 					<Box>
-						<Typography align="center" mr={3}>
-							Version {VERSION}
-						</Typography>
+						<Typography mr={3}>Version {VERSION}</Typography>
 					</Box>
 				</Toolbar>
 			</AppBar>
@@ -63,7 +61,7 @@ export default function Navigation() {
 				<Box sx={{overflow: "auto"}}>
 					<List>
 						{SidebarData.map((val, key) => (
-							<ListItem>
+							<ListItem key={key}>
 								<ListItemButton component={Link} key={val.title} to={val.link}>
 									<ListItemIcon>{val.icon}</ListItemIcon>
 									<ListItemText primary={val.title} />

@@ -6,6 +6,8 @@ import Navigation from "./Components/Navigation";
 import {ContentView} from "./Components/MainView";
 import Brauen from "./Pages/brauen";
 
+import brauerei from "./BrauereiAPI/Brauerei";
+
 function App() {
 	return (
 		<Box sx={{display: "flex"}}>

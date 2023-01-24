@@ -2,17 +2,11 @@ import * as React from "react";
 import {Box, Toolbar, Typography} from "@mui/material";
 import StatusBar from "../Components/Page-Brauen/StatusBar";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import {styled} from "@mui/material/styles";
-import TemperatureSensorCard from "../Components/Page-Brauen/DataCard";
-
-const Item = styled(Paper)(({theme}) => ({
-	backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-	...theme.typography.body2,
-	padding: theme.spacing(1),
-	textAlign: "center",
-	color: theme.palette.text.secondary,
-}));
+import TemperatureSensorCard from "../Components/Page-Brauen/TemperatureSensorCard";
+import HeizstabCard from "../Components/Page-Brauen/HeizstabCard";
+import RuehrerCard from "../Components/Page-Brauen/RuehrerCard";
+import StepsSection from "../Components/Page-Brauen/StepsSection";
+import StepStatusCard from "../Components/Page-Brauen/StepStatusCard";
 
 const Brauen = () => {
 	return (
@@ -20,7 +14,7 @@ const Brauen = () => {
 			<Toolbar />
 
 			<Grid container spacing={1}>
-				<Grid xs>
+				<Grid>
 					<Typography variant="h3" component="h2" m={5}>
 						Brauen
 					</Typography>
@@ -28,7 +22,7 @@ const Brauen = () => {
 				<Grid xs={6}>
 					<StatusBar />
 				</Grid>
-				<Grid xs />
+				<Grid />
 			</Grid>
 
 			{/* //* ROW 2 */}
@@ -41,14 +35,22 @@ const Brauen = () => {
 					<TemperatureSensorCard />
 				</Grid>{" "}
 				<Grid xs={4}>
-					<TemperatureSensorCard />
+					<StepStatusCard />
 				</Grid>{" "}
 				<Grid xs={2}>
-					<TemperatureSensorCard />
+					<HeizstabCard />
 				</Grid>{" "}
 				<Grid xs={2}>
-					<TemperatureSensorCard />
+					<RuehrerCard />
 				</Grid>{" "}
+			</Grid>
+
+			{/* //* ROW 3 */}
+			<Grid container>
+				<Grid xs={3} spacing={{md: 3, xs: 2}} columns={{xs: 4, sm: 8, md: 12}}>
+					<StepsSection />
+				</Grid>
+				<Grid>Graph</Grid>
 			</Grid>
 		</Box>
 	);

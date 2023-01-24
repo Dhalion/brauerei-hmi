@@ -1,22 +1,39 @@
 import React from "react";
-import {Card, CardContent, Typography} from "@mui/material";
+import {
+	Card,
+	CardContent,
+	Grid,
+	Box,
+	ButtonGroup,
+	IconButton,
+	Paper,
+	Typography,
+} from "@mui/material";
+
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 
 export default function StatusBar() {
 	return (
-		<Card sx={{display: "flex", m: 5}}>
-			<CardContent align="center">
-				<Typography
-					sx={{
-						fontSize: 14,
-						mx: "auto",
-						textAlign: "center",
-						flexGrow: 1,
-						fontWeight: "bold",
-					}}
-					align="center"
-				>
-					Status Bar
-				</Typography>
+		<Card>
+			<CardContent>
+				<Grid container justifyContent={"flex-end"}>
+					<Grid>
+						<ButtonGroup>
+							<IconButton variant="contained" color="success">
+								<PlayCircleIcon style={{fontSize: 60}} />
+							</IconButton>
+							<IconButton variant="" color="error">
+								<PauseCircleIcon style={{fontSize: 60}} />
+							</IconButton>
+						</ButtonGroup>
+					</Grid>
+					<Grid>
+						<Paper sx={{m: 0}}>
+							<Typography variant="h3">Kellerbier</Typography>
+						</Paper>
+					</Grid>
+				</Grid>
 			</CardContent>
 		</Card>
 	);
