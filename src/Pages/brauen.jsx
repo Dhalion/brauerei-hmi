@@ -19,7 +19,7 @@ const Brauen = () => {
 						Brauen
 					</Typography>
 				</Grid>
-				<Grid xs={6}>
+				<Grid xs={6} sx={{mb: 5, mt: 5, ml: 12}}>
 					<StatusBar />
 				</Grid>
 				<Grid />
@@ -29,10 +29,10 @@ const Brauen = () => {
 			<Grid container spacing={{md: 3, xs: 2}} columns={{xs: 4, sm: 8, md: 12}}>
 				<Grid xs={2}>
 					{/* <Item>Text</Item> */}
-					<TemperatureSensorCard />
+					<TemperatureSensorCard data={1} />
 				</Grid>
 				<Grid xs={2}>
-					<TemperatureSensorCard />
+					<TemperatureSensorCard data={2} />
 				</Grid>{" "}
 				<Grid xs={4}>
 					<StepStatusCard />
@@ -50,7 +50,7 @@ const Brauen = () => {
 				<Grid xs={3} spacing={{md: 3, xs: 2}} columns={{xs: 4, sm: 8, md: 12}}>
 					<StepsSection />
 				</Grid>
-				<Grid>Graph</Grid>
+				<Grid></Grid>
 			</Grid>
 		</Box>
 	);

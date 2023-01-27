@@ -1,19 +1,31 @@
+import {DATA_UPDATE_EVENT_NAME} from "../consts";
+
 const DEFAULT_ENDPOINT = "ws://localhost";
 // const DEFAULT_ENDPOINT = "http://localhost:420";
 // const DEFAULT_PORT = 8080;
 const DEFAULT_PORT = 420;
 
+const UPDATE_INTERVAL = 10_000;
+
+const BrauereiDataUpdate = new Event(DATA_UPDATE_EVENT_NAME);
+
+document.addEventListener(DATA_UPDATE_EVENT_NAME, (e) => {
+	// console.log(brauerei.getData("t1"));
+	// Data updated
+});
+
 class Brauerei {
+	t1 = 0.1;
+	t2 = 0.2;
+	motor = 1;
+	heizstab = false;
+	lastUpdate = 0;
 	constructor() {
 		console.log("Brauerei Started");
 		if (Brauerei.instance == null) {
 			Brauerei.instance = this;
 			this.endpoint = null;
 			this.socket = null;
-			this.t1 = 0.0;
-			this.t2 = 0.0;
-			this.motor = 0;
-			this.heizstab = false;
 
 			this.connect(DEFAULT_ENDPOINT + ":" + DEFAULT_PORT);
 			this.handleResponse();
@@ -21,15 +33,50 @@ class Brauerei {
 		return Brauerei.instance;
 	}
 
+	test(message) {
+		console.log(message);
+	}
+
+	getData(data) {
+		if (Date.now() - this.lastUpdate > UPDATE_INTERVAL) {
+			this.fetchAllValues(); // fetch all values
+		}
+		switch (data) {
+			case "t1":
+				return this.t1;
+				break;
+			case "t2":
+				return this.t2;
+				break;
+			case "motor":
+				return this.motor;
+				break;
+			case "heizstab":
+				return this.heizstab;
+				break;
+			default:
+				return null;
+				break;
+		}
+	}
+
 	connect(endpoint) {
+		console.log("(Re)Connecting");
 		this.socket = new WebSocket(endpoint);
 		this.setupSocketEvents();
 	}
 
 	send(data) {
+		// Check if socket connected properly
+		if (this.socket.readyState != 1) {
+			// console.log("Socket not in ReadyState");
+			if (this.socket.readyState != 0) {
+				this.connect(); // Try to reconnect
+				return;
+			}
+		}
 		data = JSON.stringify(data);
-		console.log("Sending: " + data);
-		console.log("Type: " + typeof data);
+		// console.log("Sending: " + data);
 		this.socket.send(data);
 	}
 
@@ -58,9 +105,13 @@ class Brauerei {
 	}
 
 	_socketOnMessage(data) {
-		console.timeEnd("fetchAllValues");
-		console.log("Message: " + data);
-		// this.handleResponse();
+		// console.timeEnd("fetchAllValues");
+		// console.log("Message: " + data);
+		try {
+			brauerei.handleResponse(data);
+		} catch (err) {
+			// whatever
+		}
 	}
 
 	fetchAllValues() {
@@ -68,14 +119,32 @@ class Brauerei {
 		console.time("fetchAllValues");
 		this.send(request);
 	}
-
-	handleResponse() {
-		console.log("handling response");
+	handleResponse(data) {
+		console.log("### handling response ###");
+		if (typeof data !== "undefined") {
+			// Arsch sachen machen weil python JSON nicht ECMA-404 Konform ist
+			let res = data.data.replace(data.type, "");
+			res = res.replace(/'/g, '"');
+			res = res.replace("False", "false");
+			res = JSON.parse(res);
+			// console.log(typeof data.data);
+			// console.log(res);
+			this.t1 = res.t1;
+			this.t2 = res.t2;
+			this.motor = res.motor;
+			this.heizstab = res.heizstab;
+			this.lastUpdate = Date.now();
+			document.dispatchEvent(BrauereiDataUpdate);
+		}
+		// if ("t1" in data) {
+		// 	// this.t1 = data.t1;
+		// 	console.log(data.t1);
+		// }
 	}
 }
 
 const brauerei = new Brauerei();
-Object.freeze(brauerei);
+// Object.freeze(brauerei);
 
 export default brauerei;
 
