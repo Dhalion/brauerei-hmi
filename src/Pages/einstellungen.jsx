@@ -1,6 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
+import TempSetDialog from "../Components/TempDialog";
+import Button from "@mui/material/Button";
 
-const Einstellungen = () => {
+export const Einstellungen = () => {
+	const [openTempDialog, setOpenTempDialog] = useState(false);
+
+	const handleOpenTempDialog = () => {
+		setOpenTempDialog(true);
+	};
 	return (
 		<div>
 			<h2>Einstellungen</h2>
@@ -10,6 +17,13 @@ const Einstellungen = () => {
 				adipisci, veritatis, placeat inventore distinctio dolor nostrum
 				voluptatibus cum. Molestiae, non repudiandae.
 			</p>
+			<Button variant="outlined" onClick={handleOpenTempDialog}>
+				Open form dialog
+			</Button>
+			<TempSetDialog
+				openDialog={openTempDialog}
+				setOpenDialog={setOpenTempDialog}
+			/>
 		</div>
 	);
 };

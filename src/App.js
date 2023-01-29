@@ -7,6 +7,7 @@ import {ContentView} from "./Components/MainView";
 import Brauen from "./Pages/brauen";
 
 import brauerei from "./BrauereiAPI/Brauerei";
+import Einstellungen from "./Pages/einstellungen";
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<ContentView />} />
 				<Route path="/brauen" element={<Brauen />} />
+				<Route path="/einstellungen" element={<Einstellungen />} />
 			</Routes>
 		</Box>
 	);
