@@ -9,6 +9,14 @@ const UPDATE_INTERVAL = 10_000;
 
 const BrauereiDataUpdate = new Event(DATA_UPDATE_EVENT_NAME);
 
+export const DataProperties = {
+	t1: 0,
+	t2: 1,
+	motor: 2,
+	heizstab: 3,
+	zielTemp: 4,
+};
+
 document.addEventListener(DATA_UPDATE_EVENT_NAME, (e) => {
 	// console.log(brauerei.getData("t1"));
 	// Data updated
@@ -20,6 +28,7 @@ class Brauerei {
 	motor = 1;
 	heizstab = false;
 	lastUpdate = 0;
+	zielTemp = 0;
 	constructor() {
 		console.log("Brauerei Started");
 		if (Brauerei.instance == null) {
@@ -35,6 +44,27 @@ class Brauerei {
 
 	test(message) {
 		console.log(message);
+	}
+
+	announceUpdatedData() {
+		document.dispatchEvent(BrauereiDataUpdate);
+		console.log("Data update Event.");
+	}
+
+	setData(property, data) {
+		switch (property) {
+			case DataProperties.t1:
+				break;
+			case DataProperties.t2:
+				break;
+			case DataProperties.zielTemp:
+				this.zielTemp = data;
+				break;
+			default:
+				return false;
+		}
+		console.log(`[SET DATA] ${property} ${data}`);
+		this.announceUpdatedData();
 	}
 
 	getData(data) {
@@ -53,6 +83,9 @@ class Brauerei {
 				break;
 			case "heizstab":
 				return this.heizstab;
+				break;
+			case DataProperties.zielTemp:
+				return this.zielTemp;
 				break;
 			default:
 				return null;
@@ -117,7 +150,11 @@ class Brauerei {
 	fetchAllValues() {
 		const request = {type: "get"};
 		console.time("fetchAllValues");
-		this.send(request);
+		try {
+			this.send(request);
+		} catch (err) {
+			console.error("socket error", err);
+		}
 	}
 	handleResponse(data) {
 		console.log("### handling response ###");

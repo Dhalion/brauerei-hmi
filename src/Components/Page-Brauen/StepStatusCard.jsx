@@ -1,7 +1,28 @@
 import React from "react";
 import {Box, Card, Grid, Paper, Typography} from "@mui/material";
 import ReceiptIcon from "@mui/icons-material/Receipt";
+import brauerei, {DataProperties} from "../../BrauereiAPI/Brauerei";
+import {useEffect} from "react";
+import {DATA_UPDATE_EVENT_NAME} from "../../consts";
+
+function useEventListener(eventType, handler) {
+	useEffect(() => {
+		document.addEventListener(eventType, handler);
+		console.log("attached event");
+	}, []);
+}
+
 export default function StepStatusCard() {
+	const [tSoll, setTsoll] = React.useState(0);
+
+	// Listen for Data changes
+	useEventListener(DATA_UPDATE_EVENT_NAME, () => {
+		console.log("Triggered");
+		let zieltemp = brauerei.getData(DataProperties.zielTemp);
+		console.log(`T-Soll: ${zieltemp}`);
+		setTsoll(zieltemp);
+	});
+
 	return (
 		<Card
 			sx={{
@@ -25,7 +46,7 @@ export default function StepStatusCard() {
 							sx={{ml: 1, mb: 1}}
 							color="text.secondary"
 						>
-							(50 °C)
+							({tSoll} °C)
 						</Typography>
 					</Paper>
 				</Grid>
