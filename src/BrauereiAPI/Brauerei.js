@@ -72,16 +72,16 @@ class Brauerei {
 			this.fetchAllValues(); // fetch all values
 		}
 		switch (data) {
-			case "t1":
+			case DataProperties.t1:
 				return this.t1;
 				break;
-			case "t2":
+			case DataProperties.t2:
 				return this.t2;
 				break;
-			case "motor":
+			case DataProperties.motor:
 				return this.motor;
 				break;
-			case "heizstab":
+			case DataProperties.heizstab:
 				return this.heizstab;
 				break;
 			case DataProperties.zielTemp:

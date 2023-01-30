@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Card, Grid, Paper, Typography} from "@mui/material";
+import {Card, Grid, Paper, Typography} from "@mui/material";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import brauerei, {DataProperties} from "../../BrauereiAPI/Brauerei";
 import {useEffect} from "react";

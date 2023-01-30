@@ -7,6 +7,7 @@ import HeizstabCard from "../Components/Page-Brauen/HeizstabCard";
 import RuehrerCard from "../Components/Page-Brauen/RuehrerCard";
 import StepsSection from "../Components/Page-Brauen/StepsSection";
 import StepStatusCard from "../Components/Page-Brauen/StepStatusCard";
+import {DataProperties} from "../BrauereiAPI/Brauerei";
 
 const Brauen = () => {
 	return (
@@ -29,10 +30,10 @@ const Brauen = () => {
 			<Grid container spacing={{md: 3, xs: 2}} columns={{xs: 4, sm: 8, md: 12}}>
 				<Grid xs={2}>
 					{/* <Item>Text</Item> */}
-					<TemperatureSensorCard data={1} />
+					<TemperatureSensorCard data={DataProperties.t1} />
 				</Grid>
 				<Grid xs={2}>
-					<TemperatureSensorCard data={2} />
+					<TemperatureSensorCard data={DataProperties.t2} />
 				</Grid>{" "}
 				<Grid xs={4}>
 					<StepStatusCard />

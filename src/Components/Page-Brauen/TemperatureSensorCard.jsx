@@ -11,7 +11,7 @@ function useEventListener(eventType, handler) {
 	}, []);
 }
 
-export default function TemperatureSensorCard({data}) {
+export default function TemperatureSensorCard({data: tSensor}) {
 	const [temp, setTemp] = React.useState(0);
 
 	const [openTempDialog, setOpenTempDialog] = React.useState(false);
@@ -21,10 +21,10 @@ export default function TemperatureSensorCard({data}) {
 	};
 
 	useEventListener(DATA_UPDATE_EVENT_NAME, () => {
-		let temp = brauerei.getData("t" + data);
+		let temp = brauerei.getData(tSensor);
 		temp = temp.toFixed(1);
 		setTemp(temp);
-		console.log(`t${data}: ${temp}`);
+		console.log(`t${tSensor}: ${temp}`);
 	});
 
 	return (
@@ -55,7 +55,7 @@ export default function TemperatureSensorCard({data}) {
 						sx={{ml: 1, mb: 1}}
 						color="text.secondary"
 					>
-						Sensor {data}
+						Sensor {tSensor}
 					</Typography>
 				</Box>
 			</Card>
