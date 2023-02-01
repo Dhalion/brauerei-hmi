@@ -37,7 +37,7 @@ export default function TempSetDialog(props) {
 								color="secondary"
 								type="number"
 								onChange={(e) => setZielTemp(e.target.value)}
-								autoFocus="true"
+								autoFocus={true}
 							/>
 						</Box>
 					</DialogContent>

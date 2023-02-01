@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import TempSetDialog from "../Components/TempDialog";
 import Button from "@mui/material/Button";
+import {TempGraph} from "../Components/Page-Brauen/Graph";
 
 export const Einstellungen = () => {
 	const [openTempDialog, setOpenTempDialog] = useState(false);

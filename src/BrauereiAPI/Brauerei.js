@@ -17,6 +17,11 @@ export const DataProperties = {
 	zielTemp: 4,
 };
 
+export const BrewMode = {
+	manual: 0,
+	automatic: 1,
+};
+
 document.addEventListener(DATA_UPDATE_EVENT_NAME, (e) => {
 	// console.log(brauerei.getData("t1"));
 	// Data updated
@@ -29,6 +34,7 @@ class Brauerei {
 	heizstab = false;
 	lastUpdate = 0;
 	zielTemp = 0;
+	mode = BrewMode.manual;
 	constructor() {
 		console.log("Brauerei Started");
 		if (Brauerei.instance == null) {
