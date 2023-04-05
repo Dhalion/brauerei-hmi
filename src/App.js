@@ -8,6 +8,8 @@ import Brauen from "./Pages/brauen";
 
 import brauerei from "./BrauereiAPI/Brauerei";
 import Einstellungen from "./Pages/einstellungen";
+import Rezepte from "./Pages/rezepte";
+import Manuell from "./Pages/manuell";
 
 function App() {
 	return (
@@ -17,6 +19,8 @@ function App() {
 				<Route path="/" element={<ContentView />} />
 				<Route path="/brauen" element={<Brauen />} />
 				<Route path="/einstellungen" element={<Einstellungen />} />
+				<Route path="/rezepte" element={<Rezepte />} />
+				<Route path="/manuell" element={<Manuell />} />
 			</Routes>
 		</Box>
 	);

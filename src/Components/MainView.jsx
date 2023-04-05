@@ -6,32 +6,34 @@ export const ContentView = () => {
 		<Box component="main" sx={{flexGrow: 1, p: 3}}>
 			<Toolbar />
 			<Typography paragraph>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus
-				non enim praesent elementum facilisis leo vel. Risus at ultrices mi
-				tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non
-				tellus. Convallis convallis tellus id interdum velit laoreet id donec
-				ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl
-				suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod
-				quis viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet
-				proin fermentum leo. Mauris commodo quis imperdiet massa tincidunt. Cras
-				tincidunt lobortis feugiat vivamus at augue. At augue eget arcu dictum
-				varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt.
-				Lorem donec massa sapien faucibus et molestie ac.
+				Stilus fidibus styler stilus  fidibus geiler Stilus  fidibus keiler
+				stilus fidibus styler Stilus fidibus geiler stilus  fidibus keiler
+				Fidibus  zwei schweinefüße Ein  hochhaus auf der wasser Muss nicht,  was
+				es‚ irgendwas zu sein Ich muss nicht was es - der psalm Jenseit's von
+				violett 1800 02 Hier  (ich weiß nicht - was steht da drauf? - im hacken)
+				Im hacken hargon machen Der hat es gekonnt (was?) Ich hab im
+				horrorversion null problemo‚ nemo Du sollst die theorie nicht Mit der
+				praxis verwechseln singing all Ich hab die eier‚ du hast den stock Ich
+				hab den samen, du hast voll bock Die meinung von allen anders Die
+				meinung von die meisten pizza Spielzeug der vater‚ der nicht weiß Dass
+				er zwei söhne hat Ich hab hunger, hehe‚ ich hab hunger (ich hab hunger,
+				ich hab hunger) Zu alt, zu jung zu sprechen, zu alt Zu jung zu sein
+				Einer geht noch, noch ein (was?) Lsd-führerschein Ich hab ihn gemacht
+				und nach drei jahren
 			</Typography>
 			<Typography paragraph>
-				Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-				ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar elementum
-				integer enim neque volutpat ac tincidunt. Ornare suspendisse sed nisi
-				lacus sed viverra tellus. Purus sit amet volutpat consequat mauris.
-				Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-				vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra
-				accumsan in. In hendrerit gravida rutrum quisque non tellus orci ac.
-				Pellentesque nec nam aliquam sem et tortor. Habitant morbi tristique
-				senectus et. Adipiscing elit duis tristique sollicitudin nibh sit.
-				Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra
-				maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
-				aliquam ultrices sagittis orci a.
+				Du hast husten, schnupfen, heis- wurst Er kommt geflogen über paris Ganz
+				hoch über london phantom der (äh?) Doktor faust depressiv, lustig Felix
+				sagt: Der der räuber von st pauli Und der folgt eine erklärung (und, und
+				dann fol) und Dann folgt eine erklärung Lass die arbeit nicht verloren
+				gehen Morgen ist nicht heute Feuer in meiner hose, die geschichte
+				wahrheit Die mittagstreppen firmenabend Muskelfutter Folterflecke
+				überall auf meiner ho- Ich lieg im bett auf crack und hör die cd Track 3
+				ist richtig geil Das licht hab ich ausgemacht Die tapeten aufgerissen
+				Die hose abgeschnitten Ein stirnband um den kopf Ein schal um meine
+				titten Aufgebahrt für einen (für) nur für einen zweck Aufgebahrt nur für
+				dich allein Aufgebahrt kurt cobain, nicht jim morrison Kurt cobain, an
+				dich kommt keiner ran, selbst Der liebe gott nicht, selbst jesus
 			</Typography>
 		</Box>
 	);
