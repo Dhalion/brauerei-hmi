@@ -6,8 +6,11 @@ import {
 	Button,
 	Box,
 	Stack,
+
 } from "@mui/material";
 import Whatshot from "@mui/icons-material/Whatshot";
+
+
 
 function HeizstabBox() {
 	return (
@@ -32,17 +35,19 @@ function HeizstabBox() {
 						</Typography>
 					</Stack>
 				</Paper>
-				<Box
-					sx={{mt: 2, pb: 2}}
-					display="flex"
-					alignItems="center"
-					justifyContent={"center"}
-				>
-					<ButtonGroup variant="contained">
-						<Button color="success">AN</Button>
-						<Button color="error">AUS</Button>
-					</ButtonGroup>
-				</Box>
+				
+					<Box
+						sx={{mt: 2, pb: 2}}
+						display="flex"
+						alignItems="center"
+						justifyContent={"center"}
+						>
+
+						<ButtonGroup variant="contained">
+							<Button color="success">AN</Button>
+							<Button color="error">AUS</Button>
+						</ButtonGroup>
+					</Box>	
 			</Paper>
 		</div>
 		

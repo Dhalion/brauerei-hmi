@@ -8,7 +8,7 @@ const Manuell = () => {
 	return (
 		<Box component="main" sx={{flexGrow: 1, mr: 0}}>
 			<Toolbar />
-			<Typography variant="h3" component="h2" m={4}>
+			<Typography variant="h3" component="h2" mt={4} ml={4}>
 				Manueller Modus
 			</Typography>
 
