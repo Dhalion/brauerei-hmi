@@ -15,6 +15,11 @@ export const DataProperties = {
 	motor: 2,
 	heizstab: 3,
 	zielTemp: 4,
+	hysteresePos: 5,
+	hystereseNeg: 6,
+	connectionStatus: 7,
+	connectionPing: 8,
+	
 };
 
 export const BrewMode = {
@@ -165,7 +170,7 @@ class Brauerei {
 	handleResponse(data) {
 		console.log("### handling response ###");
 		if (typeof data !== "undefined") {
-			// Arsch sachen machen weil python JSON nicht ECMA-404 Konform ist
+			// Arsch sachen machen weil python JSON nicht ECMA-404 kKnform ist
 			let res = data.data.replace(data.type, "");
 			res = res.replace(/'/g, '"');
 			res = res.replace("False", "false");
