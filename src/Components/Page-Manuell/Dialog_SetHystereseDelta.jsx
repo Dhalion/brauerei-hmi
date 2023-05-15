@@ -6,10 +6,10 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import ThermostatAuto from "@mui/icons-material/ThermostatAuto";
-import {Box} from "@mui/material";
-import brauerei, {DataProperties} from "../BrauereiAPI/Brauerei";
+import {Box, Stack} from "@mui/material";
+// import brauerei, {DataProperties} from "../BrauereiAPI/Brauerei";
 
-export default function TempSetDialog(props) {
+export default function HystereseDeltaSetDialog(props) {
 	const [zielTemp, setZielTemp] = React.useState(0);
 
 	const handleClose = () => {
@@ -18,7 +18,7 @@ export default function TempSetDialog(props) {
 
 	function handleOk(event) {
 		event.preventDefault(); // Prevent Page reloading
-		brauerei.setData(DataProperties.zielTemp, zielTemp); //
+		// brauerei.setData(DataProperties.zielTemp, zielTemp); //! Change to Hysterese!
 		handleClose();
 	}
 
@@ -26,19 +26,30 @@ export default function TempSetDialog(props) {
 		<div>
 			<Dialog open={props.openDialog} onClose={handleClose}>
 				<form onSubmit={handleOk}>
-					<DialogTitle>Zieltemperatur</DialogTitle>
+					<DialogTitle>Hysteresewerte</DialogTitle>
 					<DialogContent>
 						<Box sx={{display: "flex", alignItems: "flex-end"}}>
-							<ThermostatAuto sx={{mr: 1, my: 0.5}} fontSize="medium" />
-							<TextField
-								id="input-with-sx"
-								label="T-Soll"
-								variant="standard"
-								color="secondary"
-								type="number"
-								onChange={(e) => setZielTemp(e.target.value)}
-								autoFocus={true}
-							/>
+							<Stack>
+								<TextField
+									id="input-with-sx"
+									label="Δ positiv"
+									variant="standard"
+									color="secondary"
+									type="number"
+									onChange={(e) => setZielTemp(e.target.value)}
+									autoFocus={true}
+								/>
+								<TextField
+									id="input-with-sx"
+									label="Δ negativ"
+									variant="standard"
+									color="secondary"
+									type="number"
+									onChange={(e) => setZielTemp(e.target.value)}
+									autoFocus={true}
+								/>
+
+							</Stack>
 						</Box>
 					</DialogContent>
 					<DialogActions sx={{mb: 1}}>

@@ -4,15 +4,33 @@ import {
 	Paper,
 	Typography,
     Grid,
+    Button,
 
 } from "@mui/material";
+import EditIcon from '@mui/icons-material/Edit';
+import TempSetDialog from '../TempDialog';
 
 function HeizenBox() {
+
+    const [openTempDialog, setOpenTempDialog] = React.useState(false);
+
+	const handleOpenTempDialog = () => {
+		setOpenTempDialog(true);
+	};
+
+
     return ( 
     <div>
-            {/* HEIZEN BOX */}
+
+        {/* Change Target Temp Dialog */}
+        <TempSetDialog
+            openDialog={openTempDialog}
+            setOpenDialog={setOpenTempDialog}
+        />
+
+        {/* HEIZEN BOX */}
         <Paper sx={{width: "80%", ml: 2, mt: 2}}>
-            <Typography variant="h4" sx={{pt: 1, pl: 3, pb: 2}} component="h2">
+            <Typography variant="h4" sx={{pt: 1, pl: 3}} component="h2">
                 Heizen
             </Typography>
             <Grid
@@ -21,7 +39,7 @@ function HeizenBox() {
                 columns={{xs: 4, sm: 8, md: 12}}
                 sx={{p: 1}}
             >
-                <Grid item xs={10} sx={{ml: 4, pt: 2, pb: 2}}>
+                <Grid item xs={10} sx={{ml: 2, pt: 1, pb: 2}}>
                     <Paper>
                         <Typography sx={{ml: 2}} variant="h6">
                             Ziel: [22°C]
@@ -35,6 +53,15 @@ function HeizenBox() {
                             - 0,500 °
                         </Typography>
                     </Paper>
+                    <Button variant="contained"
+                            sx={{mt:2}}
+                            size='small'
+                            startIcon={<EditIcon/>}
+                            color='primary'
+                            onClick={handleOpenTempDialog}
+                    >
+                    Ziel ändern
+                    </Button>
                 </Grid>
             </Grid>
         </Paper>

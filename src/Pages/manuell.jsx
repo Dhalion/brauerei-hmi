@@ -1,4 +1,4 @@
-import {Box, Paper, Toolbar, Typography, Grid} from "@mui/material";
+import {Box, Toolbar, Typography, Grid} from "@mui/material";
 import React from "react";
 import HeizstabBox from "../Components/Page-Manuell/Box_Heizstab";
 import RührwerkBox from "../Components/Page-Manuell/Box_Rührwerk";
@@ -26,7 +26,7 @@ const Manuell = () => {
 					<HeizenBox />
 					<HystereseBox />
 				</Grid>
-				
+
 				<Grid xs={4}>
 					<VerbindungBox />
 				</Grid>
