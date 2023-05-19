@@ -20,6 +20,7 @@ import {Stack} from "@mui/system";
 import {Button} from "@mui/material";
 import {update} from "../BrauereiController";
 import {Link} from "react-router-dom";
+import DebuggingBox from "./Box_Debugging";
 
 export default function Navigation() {
 	return (
@@ -72,6 +73,7 @@ export default function Navigation() {
 					<Divider />
 					<List>
 						<Button onClick={update}>Press me</Button>
+						<DebuggingBox />
 					</List>
 				</Box>
 			</Drawer>

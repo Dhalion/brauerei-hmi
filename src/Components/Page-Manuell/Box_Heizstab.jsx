@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
 	Paper,
 	Typography,
@@ -9,10 +9,34 @@ import {
 
 } from "@mui/material";
 import Whatshot from "@mui/icons-material/Whatshot";
+import brauerei, { DataProperties } from "../../BrauereiAPI/Brauerei";
+import { DATA_UPDATE_EVENT_NAME } from "../../consts";
 
-
+function useEventListener(eventType, handler) {
+	useEffect(() => {
+		document.addEventListener(eventType, handler);
+	}, []);
+}
 
 function HeizstabBox() {
+	// BreweryStates
+	const [heizstabState, setHeizstabState] = React.useState(brauerei.breweryDataState.heizstab);
+
+	// Listen for BreweryState changes
+	useEventListener(DATA_UPDATE_EVENT_NAME, () => {
+		// And set new Value when event was received
+		setHeizstabState(brauerei.breweryDataState.heizstab);
+	});
+
+
+	function handleOn() {
+		brauerei.setProperty(DataProperties.heizstab, true);
+	}
+
+	function handleOff() {
+		brauerei.setProperty(DataProperties.heizstab, false);
+	}
+
 	return (
 		<div>
 			{/* HEIZSTAB BOX */}
@@ -23,15 +47,16 @@ function HeizstabBox() {
 					</Typography>
 				</Box>
 				<Paper sx={{p: 1, ml: 3, mr: 2, mt: 1}}>
-					<Typography variant="subtitle" sx={{ml: 1}} >
-						Status:
-					</Typography>
-					<Stack direction="row" sx={{pb: 1}} display="flex"
-					alignItems="center"
-					justifyContent={"center"}>
-						<Whatshot style={{fontSize: 50}} color="error" sx={{}} />
-						<Typography variant="h5" sx={{pt: 1, pl:2}}>
-							AKTIV
+
+					<Stack 	direction="row" 
+							sx={{}}
+							display="flex"
+							alignItems="center"
+							justifyContent={"center"}
+					>
+						<Whatshot style={{fontSize: 50}} color={heizstabState ? "error" : "disabled"}  />
+						<Typography variant="h5" sx={{pl:2}}>
+							{heizstabState ? "AKTIV" : "AUS"}
 						</Typography>
 					</Stack>
 				</Paper>
@@ -44,8 +69,8 @@ function HeizstabBox() {
 						>
 
 						<ButtonGroup variant="contained">
-							<Button color="success">AN</Button>
-							<Button color="error">AUS</Button>
+							<Button color="success" onClick={handleOn} disabled={heizstabState}>AN</Button>
+							<Button color="error" onClick={handleOff} disabled={!heizstabState}>AUS</Button>
 						</ButtonGroup>
 					</Box>	
 			</Paper>

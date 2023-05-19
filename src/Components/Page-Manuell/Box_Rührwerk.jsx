@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
 	Paper,
 	Typography,
@@ -10,10 +10,19 @@ import {
 	Divider
 } from "@mui/material";
 import FlipCameraAndroid from "@mui/icons-material/FlipCameraAndroid";
+import brauerei, { DataProperties, breweryDataStateTemplate } from "../../BrauereiAPI/Brauerei";
+import { DATA_UPDATE_EVENT_NAME } from "../../consts";
 
 function valuetext(value) {
 	return `${value}°C`;
 }
+
+function useEventListener(eventType, handler) {
+	useEffect(() => {
+		document.addEventListener(eventType, handler);
+	}, []);
+}
+
 
 const marks = [
 	{value: 0, label: "OFF"},
@@ -29,8 +38,30 @@ const marks = [
 	{value: 10, label: "10"},
 ]
 
+// Button / Slider Input Handlers
+function handleON() {
+	brauerei.setProperty(DataProperties.motor, 1 )
+}
+function handleOFF() {
+	brauerei.setProperty(DataProperties.motor, 0)
+
+}
+function handleSlider(event, newValue) {
+	brauerei.setProperty(DataProperties.motor, newValue);
+}
+
+
 
 function RührwerkBox() {
+	// BreweryStates
+	const [motorState, setMotorState] = React.useState(brauerei.breweryDataState.motor);
+
+	// Listen for BreweryState changes
+	useEventListener(DATA_UPDATE_EVENT_NAME, () => {
+		// And set new Value when event was received
+		setMotorState(brauerei.breweryDataState.motor);
+	});
+
 	return (
 		<div>
 			{/* HEIZSTAB BOX */}
@@ -47,25 +78,29 @@ function RührwerkBox() {
 						alignItems="center"
 						justifyContent={"center"}
 					>
-						<FlipCameraAndroid style={{fontSize: 40}} color="" sx={{mr:2}} />
+						<FlipCameraAndroid style={{fontSize: 40}} 
+								color={motorState ? "warning" : "disabled"}
+								sx={{mr:2}} />
 						<Typography variant="h5" >
-							Stufe 0/10
+							Stufe {motorState}/10
 						</Typography>
 					</Stack>
 				</Paper>
 				<Stack>
 					<Box sx={{p: 2, ml: 2, mr:2}}>
 						<Slider
-								aria-label="Temperature"
-								defaultValue={0}
-								getAriaValueText={valuetext}
-								valueLabelDisplay="auto"
-								step={1}
-								marks={marks}
-								min={0}
-								max={10}
-								color="secondary"
-							/>
+							value={motorState}
+							aria-label="Temperature"
+							defaultValue={0}
+							getAriaValueText={valuetext}
+							valueLabelDisplay="auto"
+							step={1}
+							marks={marks}
+							min={0}
+							max={10}
+							color="secondary"
+							onChange={handleSlider}
+						/>
 
 					</Box>
 					<Divider />
@@ -76,8 +111,8 @@ function RührwerkBox() {
 						justifyContent={"center"}
 					>
 						<ButtonGroup variant="contained">
-							<Button color="success">AN</Button>
-							<Button color="error">AUS</Button>
+							<Button color="success" onClick={handleON} disabled={motorState}>AN</Button>
+							<Button color="error" onClick={handleOFF} disabled={!motorState}>AUS</Button>
 						</ButtonGroup>
 					</Box>
 				</Stack>

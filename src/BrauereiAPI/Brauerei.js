@@ -1,4 +1,4 @@
-import {DATA_UPDATE_EVENT_NAME} from "../consts";
+import { DATA_UPDATE_EVENT_NAME } from "../consts";
 
 const DEFAULT_ENDPOINT = "ws://localhost";
 // const DEFAULT_ENDPOINT = "http://localhost:420";
@@ -19,12 +19,24 @@ export const DataProperties = {
 	hystereseNeg: 6,
 	connectionStatus: 7,
 	connectionPing: 8,
-	
 };
 
 export const BrewMode = {
 	manual: 0,
 	automatic: 1,
+};
+
+export const breweryDataStateTemplate = {
+	t1: Number,
+	t2: Number,
+	motor: Number,
+	heizstab: Boolean,
+	zielTemp: Number,
+	hysteresePos: Number,
+	hystereseNeg: Number,
+	connectionStatus: Number,
+	connectionPing: Number,
+	mode: BrewMode,
 };
 
 document.addEventListener(DATA_UPDATE_EVENT_NAME, (e) => {
@@ -33,6 +45,9 @@ document.addEventListener(DATA_UPDATE_EVENT_NAME, (e) => {
 });
 
 class Brauerei {
+	// breweryDataState holds the Hardware Data and Backend State information
+	breweryDataState = breweryDataStateTemplate;
+
 	t1 = 0.1;
 	t2 = 0.2;
 	motor = 1;
@@ -40,8 +55,11 @@ class Brauerei {
 	lastUpdate = 0;
 	zielTemp = 0;
 	mode = BrewMode.manual;
+	
 	constructor() {
 		console.log("Brauerei Started");
+		this.breweryDataState.mode = BrewMode.automatic;
+		console.log("Mode: " + this.breweryDataState.mode + (this.breweryDataState.mode ? "automatic" : "manual"));
 		if (Brauerei.instance == null) {
 			Brauerei.instance = this;
 			this.endpoint = null;
@@ -59,7 +77,7 @@ class Brauerei {
 
 	announceUpdatedData() {
 		document.dispatchEvent(BrauereiDataUpdate);
-		console.log("Data update Event.");
+		console.log("Data update Event triggered.");
 	}
 
 	setData(property, data) {
@@ -78,7 +96,7 @@ class Brauerei {
 		this.announceUpdatedData();
 	}
 
-	getData(data) {
+	getProperty(data) {
 		if (Date.now() - this.lastUpdate > UPDATE_INTERVAL) {
 			this.fetchAllValues(); // fetch all values
 		}
@@ -100,6 +118,60 @@ class Brauerei {
 				break;
 			default:
 				return null;
+				break;
+		}
+	}
+
+	setProperty(DataProperty, data) {
+		switch (DataProperty) {
+			// ! T1 & T2 cannot be SET!
+			case DataProperties.t1:
+				throw new Error("DataProperty T1 is read only");
+			case DataProperties.t2:
+				throw new Error("DataProperty T2 is read only");
+
+			case DataProperties.heizstab:
+				if (typeof data != "boolean") {
+					throw new Error("Heizstab state must be boolean");
+				}
+
+				this.breweryDataState.heizstab = data;
+				this.announceUpdatedData();
+				break;
+
+			case DataProperties.motor:
+				if (typeof data != "number") {
+					throw new Error("Rührwerk state must be number");
+				}
+				this.breweryDataState.motor = data;
+				this.announceUpdatedData();
+				break;
+
+			case DataProperties.zielTemp:
+				if (typeof data != "number") {
+					throw new Error("Zieltemp state must be number");
+				}
+				this.breweryDataState.zielTemp = data;
+				this.announceUpdatedData();
+				break;
+
+			case DataProperties.hystereseNeg:
+				if (typeof data != "number") {
+					throw new Error("Hysterese- state must be number");
+				}
+				this.breweryDataState.hystereseNeg = data;
+				this.announceUpdatedData();
+				break;
+
+			case DataProperties.hysteresePos:
+				if (typeof data != "number") {
+					throw new Error("Hysterese+ state must be number");
+				}
+				this.breweryDataState.hysteresePos = data;
+				this.announceUpdatedData();
+				break;
+
+			default:
 				break;
 		}
 	}
@@ -159,13 +231,14 @@ class Brauerei {
 	}
 
 	fetchAllValues() {
-		const request = {type: "get"};
-		console.time("fetchAllValues");
-		try {
-			this.send(request);
-		} catch (err) {
-			console.error("socket error", err);
-		}
+		const request = { type: "get" };
+		console.log("fetchAllValues");
+		// console.time("fetchAllValues");
+		// try {
+		// 	this.send(request);
+		// } catch (err) {
+		// 	console.error("socket error", err);
+		// }
 	}
 	handleResponse(data) {
 		console.log("### handling response ###");
@@ -188,6 +261,10 @@ class Brauerei {
 		// 	// this.t1 = data.t1;
 		// 	console.log(data.t1);
 		// }
+	}
+
+	buttonStuff(data) {
+		console.log(data);
 	}
 }
 
