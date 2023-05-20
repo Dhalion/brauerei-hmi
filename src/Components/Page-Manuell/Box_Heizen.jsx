@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {
 	Paper,
@@ -9,11 +9,29 @@ import {
 } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import TempSetDialog from '../TempDialog';
+import brauerei from '../../BrauereiAPI/Brauerei';
+import { DATA_UPDATE_EVENT_NAME } from '../../consts';
+
+function useEventListener(eventType, handler) {
+	useEffect(() => {
+		document.addEventListener(eventType, handler);
+	}, []);
+}
+
 
 function HeizenBox() {
 
+    // States
+    const [zielTemp, setZielTemp] = React.useState(brauerei.breweryDataState.zielTemp);
+    const [avgTemp, setAvgTemp] = React.useState(brauerei.breweryDataState.avgTemp);
     const [openTempDialog, setOpenTempDialog] = React.useState(false);
 
+    useEventListener(DATA_UPDATE_EVENT_NAME, () => {
+		// And set new Value when event was received
+		setZielTemp(brauerei.breweryDataState.zielTemp);
+	});
+
+    // Change ZielTemp Dialog
 	const handleOpenTempDialog = () => {
 		setOpenTempDialog(true);
 	};
@@ -42,15 +60,15 @@ function HeizenBox() {
                 <Grid item xs={10} sx={{ml: 2, pt: 1, pb: 2}}>
                     <Paper>
                         <Typography sx={{ml: 2}} variant="h6">
-                            Ziel: [22°C]
+                            Ziel: {zielTemp}°
                         </Typography>
 
                         <Typography variant="h6" sx={{ml: 2}}> 
-                            Ø-T: 21,500°
+                            ØT: {avgTemp}°
                         </Typography>
 
-                        <Typography variant="h6" sx={{ml: 2}} color={"green"}>
-                            - 0,500 °
+                        <Typography variant="h6" sx={{ml: 2}} color={(avgTemp - zielTemp) ? "red" : "green"}>
+                            Δ {avgTemp - zielTemp}°
                         </Typography>
                     </Paper>
                     <Button variant="contained"

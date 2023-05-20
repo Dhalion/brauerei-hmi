@@ -10,7 +10,7 @@ import {Box} from "@mui/material";
 import brauerei, {DataProperties} from "../BrauereiAPI/Brauerei";
 
 export default function TempSetDialog(props) {
-	const [zielTemp, setZielTemp] = React.useState(0);
+	const [zielTemp, setZielTemp] = React.useState(brauerei.breweryDataState.zielTemp);
 
 	const handleClose = () => {
 		props.setOpenDialog(false); // Use the prop.
@@ -18,7 +18,7 @@ export default function TempSetDialog(props) {
 
 	function handleOk(event) {
 		event.preventDefault(); // Prevent Page reloading
-		brauerei.setData(DataProperties.zielTemp, zielTemp); //
+		brauerei.setProperty(DataProperties.zielTemp, zielTemp); //
 		handleClose();
 	}
 
@@ -36,7 +36,7 @@ export default function TempSetDialog(props) {
 								variant="standard"
 								color="secondary"
 								type="number"
-								onChange={(e) => setZielTemp(e.target.value)}
+								onChange={(e) => setZielTemp(e.target.valueAsNumber)}
 								autoFocus={true}
 							/>
 						</Box>

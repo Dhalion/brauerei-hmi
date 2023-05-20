@@ -29,6 +29,7 @@ export const BrewMode = {
 export const breweryDataStateTemplate = {
 	t1: Number,
 	t2: Number,
+	avgTemp: Number,
 	motor: Number,
 	heizstab: Boolean,
 	zielTemp: Number,
@@ -252,6 +253,7 @@ class Brauerei {
 			// console.log(res);
 			this.t1 = res.t1;
 			this.t2 = res.t2;
+			this.avgTemp = (this.t1, this.t2)/2;
 			this.motor = res.motor;
 			this.heizstab = res.heizstab;
 			this.lastUpdate = Date.now();

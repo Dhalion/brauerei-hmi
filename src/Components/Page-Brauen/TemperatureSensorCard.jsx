@@ -21,7 +21,7 @@ export default function TemperatureSensorCard({data: tSensor}) {
 	};
 
 	useEventListener(DATA_UPDATE_EVENT_NAME, () => {
-		let temp = brauerei.getData(tSensor);
+		let temp = brauerei.getProperty(tSensor);
 		temp = temp.toFixed(1);
 		setTemp(temp);
 		console.log(`t${tSensor}: ${temp}`);
