@@ -60,15 +60,15 @@ function HeizenBox() {
                 <Grid item xs={10} sx={{ml: 2, pt: 1, pb: 2}}>
                     <Paper>
                         <Typography sx={{ml: 2}} variant="h6">
-                            Ziel: {zielTemp}°
+                            Ziel: {zielTemp} °C
                         </Typography>
 
                         <Typography variant="h6" sx={{ml: 2}}> 
-                            ØT: {avgTemp}°
+                            ØT: {avgTemp} °C
                         </Typography>
 
                         <Typography variant="h6" sx={{ml: 2}} color={(avgTemp - zielTemp) ? "red" : "green"}>
-                            Δ {avgTemp - zielTemp}°
+                            Δ {avgTemp - zielTemp} °C
                         </Typography>
                     </Paper>
                     <Button variant="contained"

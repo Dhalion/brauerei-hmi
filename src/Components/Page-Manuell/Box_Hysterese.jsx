@@ -8,10 +8,13 @@ import {
 } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import HystereseDeltaSetDialog from './Dialog_SetHystereseDelta';
-
+import brauerei from '../../BrauereiAPI/Brauerei';
 function HystereseBox() {
 
     const [openSetHystereseDeltaDialog, setOpenSetHystereseDeltaDialog] = React.useState(false);
+    const [hysteresePos, setHysteresePos] = React.useState(brauerei.breweryDataState.hysteresePos);
+	const [hystereseNeg, setHystereseNeg] = React.useState(brauerei.breweryDataState.hystereseNeg);
+
 
 	const handleOpenSetHystereseDeltaDialog = () => {
 		setOpenSetHystereseDeltaDialog(true);
@@ -45,7 +48,7 @@ function HystereseBox() {
                                 sx={{ml: 3}}
                                 variant="h6"
                                 component="h2">
-                            Δ positiv : x°C
+                            Δ positiv : {hysteresePos} °C
                             </Typography>
                         </Paper>
                         <Paper>
@@ -54,7 +57,7 @@ function HystereseBox() {
                                 variant="h6"
                                 component="h2"
                             >
-                            Δ negativ : x°C
+                            Δ negativ : {hystereseNeg} °C
                             </Typography>
                         </Paper>
                         <Button variant="contained"

@@ -7,10 +7,12 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import ThermostatAuto from "@mui/icons-material/ThermostatAuto";
 import {Box, Stack} from "@mui/material";
-// import brauerei, {DataProperties} from "../BrauereiAPI/Brauerei";
+import brauerei, { DataProperties } from "../../BrauereiAPI/Brauerei";
 
 export default function HystereseDeltaSetDialog(props) {
-	const [zielTemp, setZielTemp] = React.useState(0);
+	const [hysteresePos, setHysteresePos] = React.useState(brauerei.breweryDataState.hysteresePos);
+	const [hystereseNeg, setHystereseNeg] = React.useState(brauerei.breweryDataState.hystereseNeg);
+
 
 	const handleClose = () => {
 		props.setOpenDialog(false); // Use the prop.
@@ -18,7 +20,9 @@ export default function HystereseDeltaSetDialog(props) {
 
 	function handleOk(event) {
 		event.preventDefault(); // Prevent Page reloading
-		// brauerei.setData(DataProperties.zielTemp, zielTemp); //! Change to Hysterese!
+		brauerei.setProperty(DataProperties.hysteresePos, hysteresePos);
+		brauerei.setProperty(DataProperties.hystereseNeg, hystereseNeg); 
+
 		handleClose();
 	}
 
@@ -36,7 +40,7 @@ export default function HystereseDeltaSetDialog(props) {
 									variant="standard"
 									color="secondary"
 									type="number"
-									onChange={(e) => setZielTemp(e.target.value)}
+									onChange={(e) => setHysteresePos(e.target.valueAsNumber)}
 									autoFocus={true}
 								/>
 								<TextField
@@ -45,7 +49,7 @@ export default function HystereseDeltaSetDialog(props) {
 									variant="standard"
 									color="secondary"
 									type="number"
-									onChange={(e) => setZielTemp(e.target.value)}
+									onChange={(e) => setHystereseNeg(e.target.valueAsNumber)}
 									autoFocus={true}
 								/>
 
