@@ -50,7 +50,8 @@ function HystereseBox() {
                 <Typography variant="h4" sx={{pt: 1, pl: 3, pb: 0}} component="h2">
                     Hysterese
                 </Typography>
-                <Grid
+                <Grid marks = Array.from({ length: 11 }, (_, i) => ({ value: i, label: i === 0 ? "OFF" : i.toString() }));
+
                     container
                     spacing={{md: 3, xs: 2}}
                     columns={{xs: 4, sm: 8, md: 12}}
