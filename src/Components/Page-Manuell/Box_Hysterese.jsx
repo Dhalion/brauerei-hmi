@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {
 	Paper,
@@ -9,6 +9,16 @@ import {
 import EditIcon from '@mui/icons-material/Edit';
 import HystereseDeltaSetDialog from './Dialog_SetHystereseDelta';
 import brauerei from '../../BrauereiAPI/Brauerei';
+import { DATA_UPDATE_EVENT_NAME } from '../../consts';
+
+
+function useEventListener(eventType, handler) {
+	useEffect(() => {
+		document.addEventListener(eventType, handler);
+	}, []);
+}
+
+
 function HystereseBox() {
 
     const [openSetHystereseDeltaDialog, setOpenSetHystereseDeltaDialog] = React.useState(false);
@@ -19,8 +29,12 @@ function HystereseBox() {
 	const handleOpenSetHystereseDeltaDialog = () => {
 		setOpenSetHystereseDeltaDialog(true);
 	};
+    useEventListener(DATA_UPDATE_EVENT_NAME, () => {
+		// And set new Value when event was received
+		setHysteresePos(brauerei.breweryDataState.hysteresePos);
+		setHystereseNeg(brauerei.breweryDataState.hystereseNeg);
 
-
+	});
 
     return (  
         <div>

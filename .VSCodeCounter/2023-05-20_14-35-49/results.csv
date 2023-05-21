@@ -1,0 +1,34 @@
+"filename", "language", "JavaScript", "JavaScript JSX", "JSON", "comment", "blank", "total"
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\App.js", "JavaScript", 25, 0, 0, 0, 5, 30
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\BrauereiAPI\Brauerei.js", "JavaScript", 216, 0, 0, 27, 36, 279
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\BrauereiAPI\Rezepte\RezeptSchema.json", "JSON", 0, 0, 22, 0, 0, 22
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\BrauereiAPI\Rezepte\Rezepte.js", "JavaScript", 22, 0, 0, 0, 1, 23
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\BrauereiController.js", "JavaScript", 7, 0, 0, 3, 3, 13
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Box_Debugging.jsx", "JavaScript JSX", 0, 42, 0, 4, 13, 59
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\MainView.jsx", "JavaScript JSX", 0, 39, 0, 0, 2, 41
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Navigation.jsx", "JavaScript JSX", 0, 79, 0, 0, 4, 83
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Brauen\Graph.jsx", "JavaScript JSX", 0, 42, 0, 1, 8, 51
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Brauen\HeizstabCard.jsx", "JavaScript JSX", 0, 28, 0, 2, 3, 33
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Brauen\RuehrerCard.jsx", "JavaScript JSX", 0, 28, 0, 2, 3, 33
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Brauen\StatusBar.jsx", "JavaScript JSX", 0, 52, 0, 2, 3, 57
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Brauen\StepStatusCard.jsx", "JavaScript JSX", 0, 54, 0, 3, 6, 63
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Brauen\StepsSection.jsx", "JavaScript JSX", 0, 48, 0, 0, 4, 52
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Brauen\TemperatureSensorCard.jsx", "JavaScript JSX", 0, 58, 0, 0, 7, 65
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Manuell\Box_Heizen.jsx", "JavaScript JSX", 0, 70, 0, 5, 15, 90
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Manuell\Box_Heizstab.jsx", "JavaScript JSX", 0, 65, 0, 4, 14, 83
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Manuell\Box_Hysterese.jsx", "JavaScript JSX", 0, 67, 0, 2, 10, 79
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Manuell\Box_Rührwerk.jsx", "JavaScript JSX", 0, 106, 0, 5, 14, 125
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Manuell\Box_Temperatur.jsx", "JavaScript JSX", 0, 35, 0, 0, 3, 38
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Manuell\Box_Verbindung.jsx", "JavaScript JSX", 0, 43, 0, 3, 5, 51
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Manuell\Dialog_SetHystereseDelta.jsx", "JavaScript JSX", 0, 60, 0, 0, 8, 68
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\Page-Rezepte\LoadingBanner.jsx", "JavaScript JSX", 0, 21, 0, 0, 3, 24
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\SidebarData.js", "JavaScript", 27, 0, 0, 5, 3, 35
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Components\TempDialog.jsx", "JavaScript JSX", 0, 48, 0, 0, 5, 53
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Pages\brauen.jsx", "JavaScript JSX", 0, 56, 0, 3, 6, 65
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Pages\einstellungen.jsx", "JavaScript JSX", 0, 42, 0, 0, 4, 46
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Pages\manuell.jsx", "JavaScript JSX", 0, 33, 0, 0, 8, 41
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\Pages\rezepte.jsx", "JavaScript JSX", 0, 26, 0, 0, 6, 32
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\consts.js", "JavaScript", 4, 0, 0, 0, 1, 5
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\index.js", "JavaScript", 12, 0, 0, 3, 3, 18
+"d:\Projekte\BRAUEREI\brauerei-hmi\src\webpack.config.js", "JavaScript", 3, 0, 0, 1, 1, 5
+"Total", "-", 316, 1142, 22, 75, 207, 1762
